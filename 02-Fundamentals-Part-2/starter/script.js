@@ -20,11 +20,13 @@
 
 //--------Functions--------//
 
-function logger() {
-  console.log("hi");
-}
+// function logger() {
+//   console.log("hi");
+// }
 
-//invoke | running | calling
-logger();
-logger();
-logger();
+// //invoke | running | calling
+// logger();
+// logger();
+// logger();
+
+//-----Coding Challenge #1 ------

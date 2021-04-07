@@ -36,24 +36,30 @@ if (navigator.geolocation) {
           '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       }).addTo(map);
 
-      L.marker(coords)
-        .addTo(map)
-        .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-        .openPopup();
+      map.on('click', function (mapEvent) {
+        console.log(mapEvent);
+        const { lat, lng } = mapEvent.latlng;
+
+        // L.marker(coords)
+        L.marker([lat, lng])
+          .addTo(map)
+          .bindPopup(
+            L.popup({
+              maxWidth: 250,
+              minWidth: 100,
+              autoClose: false, // one marker closes when new one is created
+              closeOnClick: false,
+              className: 'running-popup', //use for styling popup
+            })
+          )
+          .setPopupContent('House by the beach')
+          .openPopup();
+      });
+      // .on is from leaflet library. Using this instead of addEventListener. They use the _ convention
     },
+
     function () {
       alert('Could not get your position');
     }
   );
 }
-
-// 2 callback functions: 1. success, 2. error while getting coordinates
-
-// 1. Get current position
-// 2. Get latitude and longitude from coords: (Object), a child of GeolocationPosition OBJECT
-// 3. Use coordinates to load map and center map on my position.
-// On Google maps:
-// Build the URL with the latitude and longitude usiing template literals
-// Next: use 3rd party script to load and display map.
-
-// when browser succesfully gets coordinates -->

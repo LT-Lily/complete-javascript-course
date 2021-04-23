@@ -42,6 +42,7 @@ const temp = main;
 main = secondary;
 secondary = temp;
 console.log(main, secondary); // =>Vegetarian Italian
+
 // w/ destructuring
 [main, secondary] = [secondary, main];
 console.log(main, secondary); // =>Vegetarian Italian

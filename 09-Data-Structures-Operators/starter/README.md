@@ -292,3 +292,30 @@ All string methods return primitives even if called on a string OBJECT.
 STRINGS 3
 
 Padding a String - to add a number of characters to a string until the string has a certain desired length
+
+================================================================
+
+ES6 introduced 2 new data structures:
+
+1. Sets and Maps
+   already exist in other programming languages
+
+# 115. Sets
+
+A collection of UNIQUE values.
+Property: can never have any duplicate values. That prooperty makes them unique.
+
+Methods:
+.has()
+.size
+
+================================================================
+
+# 116. Maps
+
+Definition:
+Data structure to map VALUEs to KEYS.
+Just like an OBJECT, data is stored in key value pairs.
+Difference:
+Maps: KEYS can be ANY TYPE: objects or arrays/other maps
+Objects: KEYS are always STRINGS

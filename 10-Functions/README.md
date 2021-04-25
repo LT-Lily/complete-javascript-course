@@ -66,7 +66,7 @@ A function that recieves another function as an input is a HIGHER-ORDER function
 
 # greet CALLBACK FUNCTION
 
-The function passed IN is a callback function. Thta is because the callback function will be CALLED BACK later by the HIGHER-ORDER FUNCTION.
+The function passed IN is a callback function. That is because the callback function will be CALLED BACK later by the HIGHER-ORDER FUNCTION.
 
 The HIGHER-ORDER FUNCTION --calls--> CALLBACK FUNCTION
 

@@ -1,6 +1,5 @@
 'use strict';
 
-
 // REMOVE WHEN COMPLETE!!!!!! display num for testing game logic or when player guesses correctly
 // document.querySelector('.number').textContent = secretNumber;
 
@@ -10,7 +9,7 @@ let secretNumber = Math.trunc(Math.random() * 20 + 1);
 // trunc to get rid of decimal.
 // 1 - 19. .9999 truncated. solution: +1
 const message = document.querySelector('.message');
-let hs = document.querySelector(".highscore");
+let hs = document.querySelector('.highscore');
 // state variable
 let score = 20;
 let highScore = 0;
@@ -30,7 +29,7 @@ const generateNum = () => {
     message.textContent = 'Correct!!!';
     document.querySelector('.number').textContent = secretNumber;
     // Highscore
-    if(score > highScore){
+    if (score > highScore) {
       highScore = score;
       hs.textContent = highScore;
     }
@@ -73,10 +72,9 @@ const calcScore = () => {
 checkBtn.addEventListener('click', generateNum);
 // function is a value. we can pass a function as another argument.
 
-
 // RESET THE GAME WHEN "AGAIN" btn is clicked
 // get the button
-const replay = document.querySelector(".again");
+const replay = document.querySelector('.again');
 const playAgain = () => {
   // new secretNumber for each game -> let
   secretNumber = Math.trunc(Math.random() * 20 + 1);
@@ -84,21 +82,19 @@ const playAgain = () => {
   score = 20; // use as reference.
   document.querySelector('.score').textContent = score;
   // initialize message
-  message.textContent = "Start guessing...";
+  message.textContent = 'Start guessing...';
   // rest BG color
-  document.querySelector('body').style.backgroundColor = "#222";
+  document.querySelector('body').style.backgroundColor = '#222';
   // make input blank
-  document.querySelector('.guess').value = " ";
+  document.querySelector('.guess').value = ' ';
   // hide the secret number
-  document.querySelector('.number').textContent = "?"
+  document.querySelector('.number').textContent = '?';
   // restore original width of number
   document.querySelector('.number').style.width = '15rem';
-
-}
-replay.addEventListener("click", playAgain);
+};
+replay.addEventListener('click', playAgain);
 
 // HIGHSCORE
-
 
 // JS ENGINE is responsible for calling the callback function when the "click" event is fired.
 

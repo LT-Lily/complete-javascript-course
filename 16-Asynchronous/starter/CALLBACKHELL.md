@@ -18,7 +18,7 @@ Callback hell is when there a lot of nested callbacks inorder to execute asynchr
 
 a function to be executed after the timer expires
 
-Solution to Callback hell:
+# Solution to Callback hell:
 
 # PROMISES
 
@@ -58,11 +58,11 @@ If outcome is correct - receive money because it was promised.
 
 Since promises happen ASYNCHRONOUSLY, they are time sensitive and can have different STATES.
 
-# Before future value is available: PENDING
+# Before future value is available: state : PENDING
 
 In this state, Asynchronous task is still working in the background. (Analogy: Asynch task = lottery)
 
-# Asnychronous task is finished: SETTLED
+# Asnychronous task is finished: SETTLED -> Fulfilled || Rejected
 
 There are 2 types of SETTLED promises:
 

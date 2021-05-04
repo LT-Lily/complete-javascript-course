@@ -88,5 +88,5 @@ const {
 console.log(o, c); //=>11 23
 
 // Practical application of destructuring.
-// in JS: functions with a lot of parameters. Hard to  knwo the order.
-// pass an object into the funciton, function will destructure the object.
+// in JS: functions with a lot of parameters. Hard to  know the order.
+// pass an object into the function, function will destructure the object.

@@ -19,10 +19,8 @@ const generateNum = () => {
   console.log(typeof guess);
 
   // Game logic:
-  // First see if number exist
-  // Check Number
+  // First check if number exists
   if (!guess) {
-    // Doesn't exist
     message.textContent = "You didn't enter anything yet..";
   } else if (guess === secretNumber) {
     //CORRECT

@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -12,11 +11,11 @@ html {
 }
 
 body {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Press Start 2P', cursive;
   font-weight: 400;
   height: 100vh;
   color: #333;
-  background-image: linear-gradient(to top left, #753682 0%, #bf2e34 100%);
+  background-image: linear-gradient(to top left, #64dfdf 0%, #5390d9 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,6 +64,7 @@ main {
 
 .player--active {
   background-color: rgba(255, 255, 255, 0.4);
+  border: 3px solid;
 }
 .player--active .name {
   font-weight: 700;
@@ -163,5 +163,9 @@ main {
 
 .player--winner .name {
   font-weight: 700;
-  color: #c7365f;
+  color: #64dfdf;
+}
+
+.hidden {
+  display: none;
 }

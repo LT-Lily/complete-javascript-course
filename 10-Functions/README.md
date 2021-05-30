@@ -1,7 +1,6 @@
-Default Parameters
+======================================================================================================================================
 
-==========================
-Values vs References
+# 128 Values vs References
 
 Passing arguments into functions
 Primitives VS Objects (Primitive Types vs Reference Types)
@@ -10,12 +9,14 @@ How they work in the context of functions:
 In programming there are 2 terms used frequently whe dealing with functions:
 // passing by value and passing by reference
 // JAVASCRIPT DOES NOT HAVE PASSING BY REFERENCE (original value outside function can change).
-// JAVASCRIPT ONLY HAS PASS BY VALUE
-// For Objects, we do pass in a reference (the memory address of the object) but that reference is a VALUE. A value that contains a memory address.
-// We pass a reference--> function BY VALUE, NOT BY REFERENCE.
-==========================
 
-# First-class and Higher-Order Functions
+- // JAVASCRIPT ONLY HAS PASS BY VALUE
+  // For Objects, we do pass in a reference (the memory address of the object) but that reference is a VALUE. A value that contains a memory address.
+  // We pass a reference--> function BY VALUE, NOT BY REFERENCE.
+  ==========================
+  ======================================================================================================================================
+
+# 129 First-class and Higher-Order Functions
 
 JS has First-class functions.
 IMPORTANT FEATURE OF JS LANGUAGE:
@@ -85,27 +86,8 @@ CONCEPT: First-class Functions
 Just a feature that a programming language has or doesn't have. It means FUNCTIONS == VALUES. - There are no first-class functions in practice. It is just a CONCEPT.
 Higher-order-functions
 In practice: YES. Possible because a language supports FIRST-CLASS-FUNCTIONS.
-======================================================
-IIFE (Immediately Invoked Function Expressions)
 
-Definition:
-A JS function that runs as soon as it is defined.
-
-SYNTAX:
-(
-function(){}
-)();
-
-If we assign an IIFE to a variable, the value of the variable stores the return value of the IIFE, not the function itself
-
-- The value within an IIFE is encapsulated.
-
-var result = (function(){
-var name = "Lily";
-return name;
-})();
-
-===========================
+======================================================================================================================================
 
 # 130. Function Accepts Callback Functions
 
@@ -138,3 +120,76 @@ document.body.addEventListener('click', high5);
 ===========================
 
 # 131. Function RETURNING Functions
+
+# 132. Call and Apply Methods
+
+How to manually tell JS explicitly what "this" should be
+// there are 3 function methods to do that
+
+METHOD 1
+
+- .call
+
+  arg 1 = what "this" should point to
+  arg 2/3/etc = all the other required arguments
+
+  SYNTAX:
+  book.call(pointToObject, 23, "Other", "Args")
+
+METHOD 2
+
+- .apply
+
+  Same as .call.
+  Difference:
+  arg 1 = what "this" should point to
+  arg 2 = ["array", 3, "data"]
+
+  SYNTAX:
+
+  - !!!not commonly used in modern javascript
+    book.call(pointToObject, [23, "Other", "Args"])
+
+  MODERN SYNTAX
+  (preferred method)
+  book.call(pointToObject, ...flightData)
+
+METHOD 3
+
+# 133
+
+- .bind
+  Set the "this" keyword for any function call.
+
+  SYNTAX
+  other arguments passed will be set in stone
+
+Difference:
+.bind DOES NOT immediately call the function. Instead, it returns a new function where the "this" keyword is bound. (It is set to whatever value we pass into .bind)
+
+Situations to use .bind:
+
+- Using OBJECTS together with EVENT LISTENERS
+
+Remember: a function is a an object. Objects have methods.
+
+======================================================
+
+# 135 IIFE (Immediately Invoked Function Expressions)
+
+Definition:
+A JS function that runs as soon as it is defined.
+
+SYNTAX:
+(
+function(){}
+)();
+
+If we assign an IIFE to a variable, the value of the variable stores the return value of the IIFE, not the function itself.
+
+- The value within an IIFE is encapsulated.
+
+var result = (function(){
+var name = "Lily";
+return name;
+})();

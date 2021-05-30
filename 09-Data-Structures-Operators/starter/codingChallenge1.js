@@ -74,5 +74,6 @@ console.log(allPlayers);
 const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
 console.log(players1Final);
 
+// destructuring objects
 const { team1, draw, team2 } = game.odds;
 console.log(draw);

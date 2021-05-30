@@ -94,7 +94,7 @@ Piece of software that can be used by another piece of software in order to allo
 
 - Type of API interested in when using AJAX:
 # ONLINE API (made up term)
-- An application running on a web server which receives requests for data, then retrieces this data from some database and then sends it back to the client.
+- An application running on a web server which receives requests for data, then retrieves this data from some database and then sends it back to the client.
 - When building applications in practice, we simply call these online APIs, API. 
 # The term WEB API is also used for other things
 
@@ -102,19 +102,19 @@ Piece of software that can be used by another piece of software in order to allo
 - eg. Node.js or user 3rd-part APIs.
 
 - FUTURE: SEE: NODE.JS COURSE
-- Now: interested in 3rd party APIs(other developers make available for us) - Mostly FREE.
+- Now: interested in 3rd party APIs(APIs other developers make available for us) - Mostly FREE.
 
-Eg. Building travelling application - have a database with different destinations and tours 
-- build own API that can receive request from FRONT-END application in JAVASCRIPT and send back the results. Own API, hosted on OWN server. May not be enough to build own application. Could also use some 3rd-party APIs.
+Eg. Building travelling application - have a database with different destinations and tours offering.
+- On our own server, we can build own API that can receive request from FRONT-END application in JAVASCRIPT and send back the results. Own API, hosted on OWN server. May not be enough to build own application. Could also use some 3rd-party APIs.
 There are APIs for everything - weather data, data about countries, flights data, currency conversion data, apis for sending email or sms, google maps, etc etc.
 
 # APIs are what made the modern web possible in the first place.
 
 # API Data formats:
-AJAX
-XML - Data format USED to be widely used to transmit data on the web. Not used anymore.
-
-# JSON data format. 
+AJAX - Asynchronous Javascript and XML
+XML - Data format USED to be widely used to transmit data on the web. Nowadays no API uses XML data anymore. AJAX is just a name popular in the past, so it is still used even though XML is not used.
+Instead, today JSON data format is used.
+# JSON data format.
 JS Object converted to a string.
 easy to send across the web and use in JS once the data arrives.
 ============================================================
@@ -122,7 +122,7 @@ easy to send across the web and use in JS once the data arrives.
 # 243. Our first AJAX call Request: XMLHttpRequest
 
 
-// There are mayn ways of doing AJAX calls iN JS
+// There are many ways of doing AJAX calls iN JS
 // OLD SCHOOL METHOD: XML HTTP request function
 
 # Modern way of handling asynchronous JS:

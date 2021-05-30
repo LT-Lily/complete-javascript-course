@@ -50,7 +50,7 @@ If outcome is correct - receive money because it was promised.
 
 # Advantage of using promises
 
-- 1. No longer need ot rely on events and callbacks passed into asynchronous functions to handle asynchronous results.
+- 1. No longer need to rely on events and callbacks passed into asynchronous functions to handle asynchronous results.
      Events and callbacks can sometimes cause unpredictable results.
 - 2. Instead of nesting callbacks, we can chain promises for a sequence of asynchronous operations: escaping callback hell.
 

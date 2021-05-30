@@ -54,7 +54,7 @@ p {
 }
 
 /* -------------------------- */
-/* CLASSES TO MAKE MODAL WORK */
+/* CLASSES FOR MODAL */
 .hidden {
   display: none;
 }

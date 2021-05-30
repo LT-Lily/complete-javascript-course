@@ -202,7 +202,7 @@ Rest is used where we would normally write variable names, separated by commas n
 
 ===================================================================================================
 
-for-of-LOOP
+# for-of-LOOP
 
 console.log(menu.entries()); // => Object [Array Iterator] {}
 

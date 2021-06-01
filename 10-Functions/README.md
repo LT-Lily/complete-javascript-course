@@ -1,5 +1,3 @@
-======================================================================================================================================
-
 # 128 Values vs References
 
 Passing arguments into functions
@@ -20,7 +18,7 @@ In programming there are 2 terms used frequently whe dealing with functions:
 
 JS has First-class functions.
 IMPORTANT FEATURE OF JS LANGUAGE:
-JS treats functions as first-clss citizens. This means that functions are simply treated as values.
+JS treats functions as first-class citizens. This means that functions are simply treated as values.
 
 # Why does JS work this way?
 
@@ -28,8 +26,16 @@ Functions are another type of OBJECT in JS.
 Functions are values -> Objects are values too
 
 Since Functions are values, what can we do with them?
+STORING:
 
-- store in variables or object properties.
+- store FUNCTION in variables
+- store FUNCTION in object properties.
+  PASSING:
+- pass FUNCTION to other FUNCTIONS
+  RETURNING:
+- return FUNCTION FROM FUNCTIONS
+  CALLING METHODS
+- call methods on functions (functions called on functions)
 
 const add = (a, b) => a + b;
 const counter = {
@@ -193,3 +199,7 @@ var result = (function(){
 var name = "Lily";
 return name;
 })();
+
+# 136 Closures
+
+Closures are not explicitly created. Happens automatically. Just recognise these situations.

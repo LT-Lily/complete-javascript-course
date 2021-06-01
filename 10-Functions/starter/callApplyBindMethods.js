@@ -1,14 +1,3 @@
-// Learning to set the "this" keyword manually, why we would want to do that
-
-const jal = {
-  airline: 'Japan Airline',
-  iataCode: 'JAL',
-  bookings: [],
-  book(flightNo, name) {
-    console.log(`${name} booked a seat`);
-  },
-};
-
 // /=======
 const cathaypacific = {
   airline: 'Cathay Pacific',

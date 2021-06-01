@@ -71,5 +71,6 @@ const bookEU = book.bind(eual); // will not call book. Instead, returns a new fu
 bookEU(123, 'Stephen Hawkings'); // looks like the normal function
 
 // add extra arguments to bind. set in stone.
+// PARTIAL APPLICATION = a part of the arguments of the original function are already set/applied.
 const bookEU123 = book.bind(eual, 123); // presetting the 1st argument that book() requires. --> book(flightNo, name). flightNo is preset. bookEU123 only needs name now.
 bookEU123('Lily');

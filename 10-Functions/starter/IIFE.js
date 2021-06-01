@@ -30,7 +30,7 @@
 
 // Why was this invented?
 // Functions create scopes
-// One scope doe not have access to variables from an inner scope.
+// One scope does not have access to variables from an inner scope.
 // INNER scope will have access to a variable outside(global scope), not the other way around.
 // All data defined inside a scope is PRIVATE. Data is ENCAPSULATED
 // For hiding variables ==> SCOPES are a good tool. This is why IIFE were invented.

@@ -78,3 +78,54 @@ const displayMovts = movements => {
   });
 };
 displayMovts(account1.movements);
+// philosophy: each function should receive the data that it should work with instead of using a global variable
+const createUsername = accounts => {
+  // map or forEach?just modify objects that already exists.
+  accounts.forEach(acc => {
+    // forEach - produce SIDEEFFECT w/out returning anything.
+    acc.username = acc.owner // new property created
+      .toLowerCase()
+      .split(' ') // ["lily", "tan"]
+      .map(userN => userN[0])
+      .join('')
+      .toUpperCase();
+  });
+};
+createUsername(accounts);
+// console.log(accounts);
+
+// Sum the balance
+// labelBalance
+// add property of balance and display
+// const calcTotalBalance = () => {};
+// Did not do like tutor!
+const balance = accounts.forEach(account => {
+  account.balance = account.movements.reduce(
+    (accumulator, currentVal, i, arr) => {
+      return accumulator + currentVal;
+    },
+    0
+  );
+  labelBalance.textContent = account.balance;
+});
+
+// computer for each account holder.
+// Get Initials for username
+/* const user = 'Lily Tan';
+const userName = user
+  .toLowerCase()
+  .split(' ') // ["lily", "tan"]
+  .map(userN => userN[0])
+  .join('')
+  .toUpperCase();
+console.log(userName);
+ */
+// userName.forEach(userN => {
+//   const splitted = userN.split('');
+//   const initial = splitted[0].toUpperCase();
+//   console.log(initial.concat('', initial));
+// });
+
+// Notes:
+// innerHTML or textContent?
+//textContent prevents XSS attacks and has better performance - no need to parse HTML.

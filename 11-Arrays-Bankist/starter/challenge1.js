@@ -30,7 +30,9 @@ const kateData2 = [10, 5, 6, 1, 4];
 
 const juliaNewData = juliaData.slice(1, -2);
 const juliaNewData2 = juliaData2.slice(1, -2);
+
 const checkDogs = (dogsJulia, dogsKate) => {
+  console.log(dogsJulia);
   const allDogAges = dogsJulia.concat(dogsKate);
   allDogAges.forEach((age, i) => {
     age >= 3

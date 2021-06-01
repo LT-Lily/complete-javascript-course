@@ -6,7 +6,7 @@
 const account1 = {
   owner: 'Lily Tan',
   movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
-  interestRate: 1.2, // %
+  interestRate: 1.2,
   pin: 1111,
 };
 
@@ -133,9 +133,13 @@ const calculateDisplayTotals = movements => {
 
 // Event Handlers
 let currentLoggedInUser;
+// Hide Pin when typing
+// after logged in emply loginForm.value
 btnLogin.addEventListener('click', e => {
   e.preventDefault(); // prevent form from submitting
   //Check Username
+  inputLoginUsername.value = '';
+  inputLoginPin.value = '';
   currentLoggedInUser = accounts.find(
     account => account.username === inputLoginUsername.value
   );
@@ -143,6 +147,7 @@ btnLogin.addEventListener('click', e => {
   //Check Pin
   // console.log(typeof inputLoginPin.value); ==> STRING. convert to Number()
   // OPTIONAL CHAINING - ?.   .pin will only be read if currentLoggedInUser exists.
+
   if (currentLoggedInUser?.pin === Number(inputLoginPin.value)) {
     // display UI and welcome message of CURRENTUSER
     // replace textContent in labelWelcome

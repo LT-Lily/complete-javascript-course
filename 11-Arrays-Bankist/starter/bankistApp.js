@@ -1,7 +1,5 @@
 'use strict';
 
-/////////////////////////////////////////////////
-/////////////////////////////////////////////////
 // BANKIST APP
 
 // Data
@@ -77,7 +75,6 @@ const displayMovts = movements => {
     containerMovements.insertAdjacentHTML('afterbegin', movementRowHTML);
   });
 };
-displayMovts(account1.movements);
 // philosophy: each function should receive the data that it should work with instead of using a global variable
 const createUsername = accounts => {
   // map or forEach?just modify objects that already exists.
@@ -92,28 +89,23 @@ const createUsername = accounts => {
   });
 };
 createUsername(accounts);
-// console.log(accounts);
 
-// Sum the balance
-// labelBalance
-// add property of balance and display
-// const calcTotalBalance = () => {};
 // Did not do like tutor!
-const balance = accounts.forEach(account => {
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${acc.balance}€`;
+};
+
+const calcDisplayTotalBalance = account => {
   account.balance = account.movements.reduce(
-    (accumulator, currentVal, i, arr) => {
-      return accumulator + currentVal;
-    },
+    (accumulator, currentVal) => accumulator + currentVal,
     0
   );
-  labelBalance.textContent = account.balance;
-});
-
+  labelBalance.textContent = `${account.balance}`;
+};
 // Calculate Totals: IN | OUT | INTEREST
 
-// labelSumInterest
-
-const calculateTotals = movements => {
+const calculateDisplayTotals = movements => {
   const ins = movements
     .filter(movt => movt > 0)
     .reduce((acc, currentVal) => acc + currentVal, 0);
@@ -136,7 +128,35 @@ const calculateTotals = movements => {
     .reduce((acc, interest) => acc + interest, 0);
   labelSumInterest.textContent = interest;
 };
-calculateTotals(account1.movements);
+
+//--FEATURE: Login--
+
+// Event Handlers
+let currentLoggedInUser;
+btnLogin.addEventListener('click', e => {
+  e.preventDefault(); // prevent form from submitting
+  //Check Username
+  currentLoggedInUser = accounts.find(
+    account => account.username === inputLoginUsername.value
+  );
+  console.log(currentLoggedInUser);
+  //Check Pin
+  // console.log(typeof inputLoginPin.value); ==> STRING. convert to Number()
+  // OPTIONAL CHAINING - ?.   .pin will only be read if currentLoggedInUser exists.
+  if (currentLoggedInUser?.pin === Number(inputLoginPin.value)) {
+    // display UI and welcome message of CURRENTUSER
+    // replace textContent in labelWelcome
+    labelWelcome.textContent = `Welcome back ${
+      currentLoggedInUser.owner.split(' ')[0]
+    }.`;
+    containerApp.style.opacity = 100;
+    // display movements, balance, summary
+    displayMovts(currentLoggedInUser.movements);
+    calcDisplayTotalBalance(currentLoggedInUser);
+    calculateDisplayTotals(currentLoggedInUser.movements);
+  }
+});
+
 // computer for each account holder.
 // Get Initials for username
 /* const user = 'Lily Tan';
@@ -157,3 +177,4 @@ console.log(userName);
 // Notes:
 // innerHTML or textContent?
 //textContent prevents XSS attacks and has better performance - no need to parse HTML.
+// BAD PRACTICE: to chain methods that mutate original array. Eg. SPLICE. Avoid mutating arrays.

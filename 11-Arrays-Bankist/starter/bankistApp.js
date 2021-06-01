@@ -105,22 +105,22 @@ const calcDisplayTotalBalance = account => {
 };
 // Calculate Totals: IN | OUT | INTEREST
 
-const calculateDisplayTotals = movements => {
-  const ins = movements
+const calculateDisplayTotals = account => {
+  const ins = account.movements
     .filter(movt => movt > 0)
     .reduce((acc, currentVal) => acc + currentVal, 0);
   labelSumIn.textContent = `💲${ins}`;
 
-  const outs = movements
+  const outs = account.movements
     .filter(movt => movt < 0)
     .reduce((acc, currentVal) => acc + currentVal, 0);
   labelSumOut.textContent = `💲 ${Math.abs(outs)}`;
 
   // const interest: 1.2% payed each deposit
   // interest payed only if at least $1
-  const interest = movements
+  const interest = account.movements
     .filter(movt => movt > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * account.interestRate) / 100)
     .filter((interest, i, arr) => {
       console.log(arr);
       return interest >= 1;
@@ -136,10 +136,6 @@ let currentLoggedInUser;
 // Hide Pin when typing
 btnLogin.addEventListener('click', e => {
   e.preventDefault(); // prevent form from submitting
-  // Clear login form after submit
-  inputLoginUsername.value = inputLoginPin.value = '';
-  // Remove form keyboard focus()
-  inputLoginPin.blur();
 
   //Check Username
   currentLoggedInUser = accounts.find(
@@ -160,8 +156,12 @@ btnLogin.addEventListener('click', e => {
     // display movements, balance, summary
     displayMovts(currentLoggedInUser.movements);
     calcDisplayTotalBalance(currentLoggedInUser);
-    calculateDisplayTotals(currentLoggedInUser.movements);
+    calculateDisplayTotals(currentLoggedInUser);
   }
+  // Clear login form after submit
+  inputLoginUsername.value = inputLoginPin.value = '';
+  // Remove form keyboard focus()
+  inputLoginPin.blur();
 });
 
 // computer for each account holder.

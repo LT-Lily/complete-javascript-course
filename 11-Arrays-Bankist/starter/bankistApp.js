@@ -134,12 +134,14 @@ const calculateDisplayTotals = movements => {
 // Event Handlers
 let currentLoggedInUser;
 // Hide Pin when typing
-// after logged in emply loginForm.value
 btnLogin.addEventListener('click', e => {
   e.preventDefault(); // prevent form from submitting
+  // Clear login form after submit
+  inputLoginUsername.value = inputLoginPin.value = '';
+  // Remove form keyboard focus()
+  inputLoginPin.blur();
+
   //Check Username
-  inputLoginUsername.value = '';
-  inputLoginPin.value = '';
   currentLoggedInUser = accounts.find(
     account => account.username === inputLoginUsername.value
   );

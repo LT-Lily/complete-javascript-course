@@ -109,6 +109,34 @@ const balance = accounts.forEach(account => {
   labelBalance.textContent = account.balance;
 });
 
+// Calculate Totals: IN | OUT | INTEREST
+
+// labelSumInterest
+
+const calculateTotals = movements => {
+  const ins = movements
+    .filter(movt => movt > 0)
+    .reduce((acc, currentVal) => acc + currentVal, 0);
+  labelSumIn.textContent = `💲${ins}`;
+
+  const outs = movements
+    .filter(movt => movt < 0)
+    .reduce((acc, currentVal) => acc + currentVal, 0);
+  labelSumOut.textContent = `💲 ${Math.abs(outs)}`;
+
+  // const interest: 1.2% payed each deposit
+  // interest payed only if at least $1
+  const interest = movements
+    .filter(movt => movt > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((interest, i, arr) => {
+      console.log(arr);
+      return interest >= 1;
+    })
+    .reduce((acc, interest) => acc + interest, 0);
+  labelSumInterest.textContent = interest;
+};
+calculateTotals(account1.movements);
 // computer for each account holder.
 // Get Initials for username
 /* const user = 'Lily Tan';

@@ -41,7 +41,17 @@ console.log(firstWithdrawal);
 
 // find
 // returns first element that matches (ELEMENT ITSELF)
-
+// USE FOR LOGIN FUNCTION
 // Get acc where owner is Lily
 const account = accounts.find(acc => acc.owner === 'Lily Tan');
 console.log(account);
+/* {
+    owner: 'Lily Tan',
+    movements: [
+       200,  450, -400,
+      3000, -650, -130,
+        70, 1300
+    ],
+    interestRate: 1.2,
+    pin: 1111
+  } */

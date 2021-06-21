@@ -22,7 +22,7 @@ const renderCountry = function (data, className = '') {
   countriesContainer.style.opacity = 1;
 };
 
-const request = fetch('https://restcountries.eu/rest/v2/name/portugal');
+const request = fetch('https://restcountries.eu/rest/v2/name/portugal'); // 1. Build Promise
 console.log(request);
 // => Promise
 
@@ -63,6 +63,7 @@ const getCountryData = function (country) {
     .then(data => renderCountry(data[0]));
 };
 getCountryData('portugal');
+getCountryData('thailand');
 // fetch
 // transform response to json
 // take the data and render country

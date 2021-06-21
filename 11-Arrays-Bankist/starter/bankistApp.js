@@ -53,8 +53,10 @@ const btnSort = document.querySelector('.btn--sort');
 
 const inputLoginUsername = document.querySelector('.login__input--user');
 const inputLoginPin = document.querySelector('.login__input--pin');
+
 const inputTransferTo = document.querySelector('.form__input--to');
 const inputTransferAmount = document.querySelector('.form__input--amount');
+
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
@@ -91,11 +93,6 @@ const createUsername = accounts => {
 createUsername(accounts);
 
 // Did not do like tutor!
-const calcDisplayBalance = function (acc) {
-  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance}€`;
-};
-
 const calcDisplayTotalBalance = account => {
   account.balance = account.movements.reduce(
     (accumulator, currentVal) => accumulator + currentVal,
@@ -134,6 +131,12 @@ const calculateDisplayTotals = account => {
 // Event Handlers
 let currentLoggedInUser;
 // Hide Pin when typing
+const updateUI = acc => {
+  displayMovts(acc.movements);
+  calcDisplayTotalBalance(acc);
+  calculateDisplayTotals(acc);
+};
+
 btnLogin.addEventListener('click', e => {
   e.preventDefault(); // prevent form from submitting
 
@@ -153,10 +156,9 @@ btnLogin.addEventListener('click', e => {
       currentLoggedInUser.owner.split(' ')[0]
     }.`;
     containerApp.style.opacity = 100;
-    // display movements, balance, summary
-    displayMovts(currentLoggedInUser.movements);
-    calcDisplayTotalBalance(currentLoggedInUser);
-    calculateDisplayTotals(currentLoggedInUser);
+
+    // Display movements, balance, summary
+    updateUI(currentLoggedInUser);
   }
   // Clear login form after submit
   inputLoginUsername.value = inputLoginPin.value = '';
@@ -164,7 +166,59 @@ btnLogin.addEventListener('click', e => {
   inputLoginPin.blur();
 });
 
+/*--FEATURE: Transfers--*/
+// inputTransferTo
+// inputTransferAmount
+// btnTransfer
+
+// create event listener on btnTransfer -
+// get inputTransferTo.value, find user with matching name
+// deposit inputTransferAmount.value to user.movements
+//
+btnTransfer.addEventListener('click', e => {
+  e.preventDefault();
+  const userToBeTransfered = accounts.find(
+    account => account.username === inputTransferTo.value
+  );
+  const amountToTransfer = Number(inputTransferAmount.value);
+  console.log(userToBeTransfered);
+  console.log(`Transferring to ${userToBeTransfered.username}`);
+  console.log(`Amount to be transfered ${amountToTransfer}`);
+  console.log(`Current logged in user ${currentLoggedInUser.username}`);
+
+  // check username
+  // if userToBeTransfered exists, -from current account, + to userToBeTransfered.
+  // clear form after submit
+  // amountToTransfer must be >0 && > currentUser balance
+  // cannot transfer money to own account
+  if (
+    amountToTransfer > 0 &&
+    currentLoggedInUser.balance >= amountToTransfer &&
+    userToBeTransfered.username !== currentLoggedInUser.username &&
+    userToBeTransfered?.username === userToBeTransfered.username
+  ) {
+    console.log('valid transfer');
+    currentLoggedInUser.movements.push(-amountToTransfer);
+    userToBeTransfered.movements.push(amountToTransfer);
+    console.log(currentLoggedInUser.movements);
+    currentLoggedInUser.balance = -amountToTransfer;
+    calcDisplayTotalBalance();
+    // render the new balance
+    updateUI(currentLoggedInUser);
+
+    console.log(currentLoggedInUser.balance);
+    // console.log(currentLoggedInUser.movements);
+  } else {
+    alert('Invalid transfer.');
+  }
+
+  // clear form and remove focus()
+  inputTransferTo.value = inputTransferAmount.value = '';
+  inputTransferAmount.blur();
+});
+
 // computer for each account holder.
+
 // Get Initials for username
 /* const user = 'Lily Tan';
 const userName = user

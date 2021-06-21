@@ -25,34 +25,35 @@ const renderCountry = function (data, className = '') {
 };
 
 const getCountryAndNeighbour = function (country) {
-  // AJAX call country 1
+  // AJAX call #1 country 1
   const request = new XMLHttpRequest();
   request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
   request.send(); // sends request to above URL and fetches the data in the background. Once this is done, it will FIRE the "load" EVENT
 
   request.addEventListener('load', function () {
-    // Callback funct()
     const [data] = JSON.parse(this.responseText);
     console.log(data);
 
-    renderCountry(data); // Render country 1
+    // Render country 1
+    renderCountry(data);
 
     // Get neighbour country 2
     const [neighbour] = data.borders; // Get neighbour country 2
     // destructure and take first element
 
-    if (!neighbour) return; // some countries don't have border
+    // some countries don't have borders - return immediately
     // if another border exists, do 2nd AJAX call
+    if (!neighbour) return;
 
     // AJAX call #2 - DEPENDENT on 1st AJAX call
     const request2 = new XMLHttpRequest();
     request2.open('GET', `https://restcountries.eu/rest/v2/alpha/${neighbour}`);
     request2.send();
-    // listen to load even
+
+    // listen to load event
     request2.addEventListener('load', function () {
       // Callback funct() 2
-      //this.response is a string
-      const data2 = JSON.parse(this.responseText);
+      const data2 = JSON.parse(this.responseText); //this.response is a string
       console.log(data2);
 
       renderCountry(data2, 'neighbour');
